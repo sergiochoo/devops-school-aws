@@ -4,7 +4,8 @@ Install WordPress on AWS.
 
 Setup personal settings in 'variables.tf' file.
 
-```terraform init
+```
+terraform init
 terraform plan
 terraform apply
 ```
