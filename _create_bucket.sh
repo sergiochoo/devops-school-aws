@@ -5,7 +5,7 @@ bucketname=sergiochoo-wordpress-tfstate
 region=eu-central-1
 ## end of vars section
 
-# create bucker
+# create bucket
 aws s3api create-bucket --bucket $bucketname --region $region \
     --create-bucket-configuration LocationConstraint=$region
 
