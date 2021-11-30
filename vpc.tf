@@ -1,7 +1,7 @@
 resource "aws_vpc" "main" {
-  cidr_block       = "10.0.0.0/24"
-  instance_tenancy = "default"
-
+  cidr_block           = "10.0.0.0/24"
+  instance_tenancy     = "default"
+  enable_dns_hostnames = true
   tags = {
     Name = "wordpress-vpc"
     env  = var.env
@@ -97,7 +97,6 @@ resource "aws_route_table" "private_rt" {
 
   route {
     cidr_block     = "0.0.0.0/0"
-    gateway_id     = aws_internet_gateway.gw.id
     nat_gateway_id = aws_nat_gateway.nat[count.index].id
   }
 

@@ -12,14 +12,23 @@ data "aws_ami" "latest_amazon_linux" {
   }
 }
 
+locals {
+  credentials = {
+    db_name        = aws_ssm_parameter.db_name.value
+    db_username    = aws_ssm_parameter.db_username.value
+    db_password    = aws_ssm_parameter.db_password.value
+    db_host        = aws_db_instance.mysql.endpoint
+    region         = var.region
+    file_system_id = aws_efs_file_system.wordpress_fs.id
+  }
+}
 resource "aws_launch_template" "wordpress_lt" {
   name          = "wordpress_lt"
   description   = "Launch Template for the WordPress instances"
   image_id      = data.aws_ami.latest_amazon_linux.id
   instance_type = var.ec2_instance_type
-  key_name      = "wordpress-keypairs"
+  key_name      = aws_key_pair.wordpress.key_name
   user_data     = base64encode(templatefile("./data/user_data.sh", local.credentials))
-
 
   iam_instance_profile {
     name = aws_iam_instance_profile.parameter_store_profile.name
@@ -55,16 +64,4 @@ resource "aws_autoscaling_group" "wordpress_asg" {
   depends_on = [
     aws_db_instance.mysql,
   ]
-
-}
-
-locals {
-  credentials = {
-    db_name        = aws_ssm_parameter.db_name.value
-    db_username    = aws_ssm_parameter.db_username.value
-    db_password    = aws_ssm_parameter.db_password.value
-    db_host        = aws_db_instance.mysql.endpoint
-    region         = var.region
-    file_system_id = aws_efs_file_system.wordpress_fs.id
-  }
 }
