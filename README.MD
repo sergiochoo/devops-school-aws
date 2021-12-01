@@ -2,7 +2,7 @@
 
 Install WordPress on AWS using Auto scaling groups and Docker.
 
-Setup personal settings in 'variables.tf' file.
+Setup personal settings in 'variables.tf' file first.
 
 ## Usage
 ```
@@ -13,7 +13,7 @@ terraform apply
 
 ![Alt text](data/scheme.png?raw=true "Scheme")
 
-### Resources that I used for this task
+### Resources that I've used for this task
 
 - [x] VPC
 - [x] Internet Gateway
@@ -29,3 +29,5 @@ terraform apply
 - [x] Variables
 - [x] EFS
 - [x] RDS
+
+Complete setup takes about 6 minutes.
