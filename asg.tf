@@ -18,7 +18,6 @@ locals {
     db_username    = aws_ssm_parameter.db_username.value
     db_password    = aws_ssm_parameter.db_password.value
     db_host        = aws_db_instance.mysql.endpoint
-    region         = var.region
     file_system_id = aws_efs_file_system.wordpress_fs.id
   }
 }
