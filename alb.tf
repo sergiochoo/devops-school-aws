@@ -22,7 +22,7 @@ resource "aws_lb_target_group" "wordpress_tg" {
   vpc_id                        = aws_vpc.main.id
   load_balancing_algorithm_type = "round_robin"
   protocol_version              = "HTTP1"
-  slow_start                    = "0"
+  slow_start                    = "600"
 
   health_check {
     interval            = 30
