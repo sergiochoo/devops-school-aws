@@ -25,7 +25,8 @@ variable "env" {
 variable "public_subnet_cidrs" {
   default = [
     "10.0.1.0/24",
-    "10.0.2.0/24"
+    "10.0.2.0/24",
+    "10.0.3.0/24"
   ]
 }
 
@@ -44,7 +45,7 @@ variable "ec2_wordpress_asg_desired_capacity" {
 
 variable "ec2_wordpress_asg_min_capacity" {
   type    = number
-  default = "2"
+  default = "1"
 }
 
 variable "ec2_wordpress_asg_max_capacity" {
