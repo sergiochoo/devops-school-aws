@@ -67,8 +67,3 @@ variable "db_username" {
   type    = string
   default = "wordpress"
 }
-
-variable "db_password" {
-  type    = string
-  default = "w0rdpr3ss"
-}
